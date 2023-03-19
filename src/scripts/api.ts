@@ -63,7 +63,7 @@ const API = {
 					}
 
 					//@ts-ignore
-					const activationType = getActivationType(item.system.activation?.type);
+					const activationType = this.getActivationType(item.system.activation?.type);
 
 					acc[activationType].add(item);
 
