@@ -1,4 +1,4 @@
-# Character Actions 5e
+# Character Actions 5e Variant
 
 ![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-dnd5eCharacterActions%2Freleases%2Flatest)
 [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fcharacter-actions-list-5e&colorB=4aa94a)](https://forge-vtt.com/bazaar#package=character-actions-list-5e)
@@ -11,7 +11,26 @@
 [![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 [![patreon](https://img.shields.io/badge/-patreon-%23FF424D)](https://www.patreon.com/ElfFriend_DnD)
 
-This module provides a placable reusable "component" which details all of the actions a given Character Actor can take, intending to replicate the list in the Actions Tab of the D&DBeyond character sheet. The module has two ways in which it can be used: it will either inject the actions tab itself, or another module can leverage the API it provides and use that to inject the proper HTML wherever it desires.
+## THIS MODULE IS A VARIANT VERSION OF THE [Character Actions 5e](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions)
+
+This module provides a placeable reusable "component" which details all of the actions a given Character Actor can take, intending to replicate the list in the Actions Tab of the D&DBeyond character sheet. The module has two ways in which it can be used: it will either inject the actions tab itself, or another module can leverage the API it provides and use that to inject the proper HTML wherever it desires.
+
+### What is variant ?
+
+The original author expressed doubts about accepting PR on this because the changes on the code are many and would require many checks, but upgrading the system to 2.1.X forced my hand and o decided to create a variant module of the original one for private use anyone can use it if they find it useful. Below are the differences
+
+- Update typescript and all that goes with it (for example replace getGame() with standard game)
+- restructured the code to comply with the standard "languages", "scripts", "assests", "lib" folders from https://github.com/League-of-Foundry-Developers/FoundryVTT-Module-Template 
+- all functions related to the API have been transferred to the file "api.ts" and reachable on `game.modules.get('character-actions-list-5e').api`
+- For retrocompatibility issue i still use the original module id so be aware
+
+I think I could have done the job better, but let me know what you think.
+
+![preview](./wiki/images/preview.png)
+
+## Known Issues
+
+- Using an item which changes charges or spell slots on any sheet that does not natively implement CharacterActions causes the tab to change.
 
 ## List Features
 
@@ -99,7 +118,7 @@ class MyCoolCharacterSheet extends ActorSheet5e {
 
 ### `isItemInActionList(item: Item5e): boolean`
 
-A handlebars helper is provided as well in case any sheet wants an easy way to check if an Item being rendered is expected to be part of the Actions List. `CAL5E-isItemInActionList` is a simple wrapper around `isItemInActionList`, it expects the same argument of an `item` instance.
+A handlebars helper is provided as well in case any sheet wants an easy way to check if an Item being rendered is expected to be part of the Actions List. `character-actions-list-5e-isItemInActionList` is a simple wrapper around `isItemInActionList`, it expects the same argument of an `item` instance.
 
 #### Example
 
@@ -135,16 +154,16 @@ type ActorActionsList = Record<
 
 When passed an actor, returns the actor's 'actions list' items organized by activation type. I'm not sure why but it seems some of the information is missing from the Item5e in this list, be wary of that if you are looking to use this in another module.
 
-### Handlebars Helper: `CAL5E-isItemInActionList`
+### Handlebars Helper: `character-actions-list-5e-isItemInActionList`
 
-A handlebars helper is provided as well in case any sheet wants an easy way to check if an Item being rendered is expected to be part of the Actions List. `CAL5E-isItemInActionList` is a simple wrapper around `isItemInActionList`, it expects the same argument of an `item` instance.
+A handlebars helper is provided as well in case any sheet wants an easy way to check if an Item being rendered is expected to be part of the Actions List. `character-actions-list-5e-isItemInActionList` is a simple wrapper around `isItemInActionList`, it expects the same argument of an `item` instance.
 
 #### Example
 
 ```hbs
 {{#each items as |item|}}
   {{!-- other stuff --}}
-  {{#if (CAL5E-isItemInActionList item)}}Action{{/if}}
+  {{#if (character-actions-list-5e-isItemInActionList item)}}Action{{/if}}
 {{/each}}
 ```
 
@@ -152,7 +171,7 @@ A handlebars helper is provided as well in case any sheet wants an easy way to c
 
 If a sheet module wants to specifically block the injection of the actions tab without implementing the actions list itself, add `blockActionsTab` to the options being passed to the FormApplication class.
 
-Note that by default, the actions tab will only inject itself if no DOM element with the class `.character-actions-dnd5e` exists in the Application being rendered.
+**Note:** that by default, the actions tab will only inject itself if no DOM element with the class `.character-actions-list-5e` exists in the Application being rendered.
 
 #### Example
 
@@ -180,9 +199,73 @@ I'm honestly not sure how well this will play with modules that affect character
 | [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items)                         |      :shrug:       | Spells assigned to magic items do not appear in the Actions List. |
 | [Inventory+](https://github.com/syl3r86/inventory-plus)                                             | :white_check_mark: | Inventory+ organization has no effect on Actions Tab              |
 
-## Known Issues
+# Build
 
-- Using an item which changes charges or spell slots on any sheet that does not natively implement CharacterActions causes the tab to change.
+## Install all packages
+
+```bash
+npm install
+```
+## npm build scripts
+
+### build
+
+will build the code and copy all necessary assets into the dist folder and make a symlink to install the result into your foundry data; create a
+`foundryconfig.json` file with your Foundry Data path.
+
+```json
+{
+  "dataPath": "~/.local/share/FoundryVTT/"
+}
+```
+
+`build` will build and set up a symlink between `dist` and your `dataPath`.
+
+```bash
+npm run-script build
+```
+
+### NOTE:
+
+You don't need to build the `foundryconfig.json` file you can just copy the content of the `dist` folder on the module folder under `modules` of Foundry
+
+### build:watch
+
+`build:watch` will build and watch for changes, rebuilding automatically.
+
+```bash
+npm run-script build:watch
+```
+
+### clean
+
+`clean` will remove all contents in the dist folder (but keeps the link from build:install).
+
+```bash
+npm run-script clean
+```
+
+### prettier-format
+
+`prettier-format` launch the prettier plugin based on the configuration [here](./.prettierrc)
+
+```bash
+npm run-script prettier-format
+```
+
+### package
+
+`package` generates a zip file containing the contents of the dist folder generated previously with the `build` command. Useful for those who want to manually load the module or want to create their own release
+
+```bash
+npm run-script package
+```
+
+## [Changelog](./CHANGELOG.md)
+
+## Issues
+
+Any issues, bugs, or feature requests are always welcome to be reported directly to the [Issue Tracker](https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/issues ), or using the [Bug Reporter Module](https://foundryvtt.com/packages/bug-reporter/).
 
 ## Acknowledgements
 
