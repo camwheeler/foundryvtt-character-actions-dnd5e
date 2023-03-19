@@ -102,7 +102,7 @@ Hooks.once("init", async function () {
 				"accessing the module api on globalThis is deprecated and will be removed in a future update, check if there is an update to your sheet module"
 			);
 			return characterActionsModuleData?.api?.isItemInActionList(...args);
-		},
+		}
 	};
 
 	Hooks.call(`CharacterActions5eReady`, characterActionsModuleData?.api);

@@ -75,29 +75,28 @@ export function dialogWarning(message, icon = "fas fa-exclamation-triangle") {
 
 // =========================================================================================
 
-export const isItemFavorite = function(item):Boolean {
-    if (!item) {
-        return false;
-    }
+export const isItemFavorite = function (item): Boolean {
+	if (!item) {
+		return false;
+	}
+	let isFav =
+		(game.modules.get("favtab")?.active && item.flags["favtab"]?.isFavorite) ||
+		(game.modules.get("favorite-items")?.active && item.flags["favorite-items"]?.favorite) ||
+		item.flags[CONSTANTS.MODULE_ID]?.favorite ||
+		false;
 
-    let isFav:Boolean =
-        <boolean>(game.modules.get("favtab")?.active && item.flags["favtab"]?.isFavorite) ||
-        <boolean>(game.modules.get("favorite-items")?.active && item.flags["favorite-items"]?.favorite) ||
-        item.flags[CONSTANTS.MODULE_ID]?.favorite ||
-        false;
+	const isAlreadyTidyFav = getProperty(item.flags[CONSTANTS.MODULE_ID], `favorite`);
+	// for retrocompatibility
+	const isAlreadyFabTab = getProperty(item.flags["favtab"], `isFavorite`);
+	if (String(isAlreadyFabTab) === "true" && String(isAlreadyFabTab) === "false") {
+		if (String(isAlreadyTidyFav) !== "true" && String(isAlreadyTidyFav) !== "false") {
+			isFav = item.flags["favtab"]?.isFavorite; // for retrocompatibility
+		}
+	}
 
-    const isAlreadyTidyFav = getProperty(item.flags[CONSTANTS.MODULE_ID], `favorite`);
-    // for retrocompatibility
-    const isAlreadyFabTab = getProperty(item.flags["favtab"], `isFavorite`);
-    if (String(isAlreadyFabTab) === "true" && String(isAlreadyFabTab) === "false") {
-        if (String(isAlreadyTidyFav) !== "true" && String(isAlreadyTidyFav) !== "false") {
-            isFav = <boolean>item.flags["favtab"]?.isFavorite; // for retrocompatibility
-        }
-    }
+	// if(String(isAlreadyTidyFav) !== "true" && String(isAlreadyTidyFav) !== "false") {
+	// //   item.setFlag(CONSTANTS.MODULE_ID,"favorite",isFav);
+	// }
 
-    // if(String(isAlreadyTidyFav) !== "true" && String(isAlreadyTidyFav) !== "false") {
-    // //   item.setFlag(CONSTANTS.MODULE_ID,"favorite",isFav);
-    // }
-
-    return isFav;
-}
+	return isFav;
+};

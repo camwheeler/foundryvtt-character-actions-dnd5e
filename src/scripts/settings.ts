@@ -9,7 +9,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "client",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.limitActionsToCantrips.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.limitActionsToCantrips.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.includeOneMinuteSpells, {
@@ -18,7 +18,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "client",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.includeOneMinuteSpells.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.includeOneMinuteSpells.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.includeSpellsWithEffects, {
@@ -27,7 +27,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "client",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.includeSpellsWithEffects.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.includeSpellsWithEffects.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.includeConsumables, {
@@ -36,7 +36,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "client",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.includeConsumables.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.includeConsumables.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.injectCharacters, {
@@ -45,7 +45,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "client",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.injectCharacters.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.injectCharacters.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.injectNPCs, {
@@ -54,7 +54,7 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "world",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.injectNPCs.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.injectNPCs.Hint`
 	});
 
 	game.settings.register(CONSTANTS.MODULE_ID, MySettings.injectVehicles, {
@@ -63,6 +63,6 @@ export const registerSettings = function () {
 		type: Boolean,
 		scope: "world",
 		config: true,
-		hint: `${CONSTANTS.MODULE_ID}.settings.injectVehicles.Hint`,
+		hint: `${CONSTANTS.MODULE_ID}.settings.injectVehicles.Hint`
 	});
 };

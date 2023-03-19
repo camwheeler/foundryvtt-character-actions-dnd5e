@@ -5,11 +5,11 @@ export enum MySettings {
 	injectCharacters = "inject-characters",
 	injectNPCs = "inject-npcs",
 	injectVehicles = "inject-vehicles",
-	limitActionsToCantrips = "limit-actions-to-cantrips",
+	limitActionsToCantrips = "limit-actions-to-cantrips"
 }
 
 export enum MyFlags {
-	filterOverride = "filter-override",
+	filterOverride = "filter-override"
 }
 
 export enum ItemTypeSortValues {
@@ -21,5 +21,5 @@ export enum ItemTypeSortValues {
 	tool = 6,
 	backpack = 7,
 	class = 8,
-	loot = 9,
+	loot = 9
 }

@@ -44,7 +44,7 @@ const API = {
 					//ts-expect-error
 					item.labels.derivedDamage = item.labels.derivedDamage.map(({ formula, ...rest }) => ({
 						formula: formula?.replace(/\[.+?\]/, "") || "0",
-						...rest,
+						...rest
 					}));
 				}
 
@@ -80,7 +80,7 @@ const API = {
 				lair: new Set<Item5e>(),
 				legendary: new Set<Item5e>(),
 				reaction: new Set<Item5e>(),
-				other: new Set<Item5e>(),
+				other: new Set<Item5e>()
 			}
 		);
 
@@ -211,39 +211,39 @@ const API = {
 			activationTypes: {
 				//@ts-ignore
 				...game.dnd5e.config.abilityActivationTypes,
-				other: game.i18n.localize(`DND5E.ActionOther`),
+				other: game.i18n.localize(`DND5E.ActionOther`)
 			},
 			//@ts-ignore
 			damageTypes: { ...game.dnd5e.config.damageTypes, ...game.dnd5e.config.healingTypes },
 			damageTypeIconMap: this.damageTypeIconMap,
 			rollIcon: options?.rollIcon,
-			isOwner: actorData.isOwner,
+			isOwner: actorData.isOwner
 		});
 	},
 
-    toggleItemAction(actor:string, item:Item):void {
-        if (!item) {
-            warn(`No item is passed`, true);
-            return;
-        }
-        if (!actor) {
-            warn(`No actor is passed`, true);
-            return;
-        }
+	toggleItemAction(actor: string, item: Item): void {
+		if (!item) {
+			warn(`No item is passed`, true);
+			return;
+		}
+		if (!actor) {
+			warn(`No actor is passed`, true);
+			return;
+		}
 
-        //@ts-ignore
-        const relevantItem = actor.items.get(item.id);
+		//@ts-ignore
+		const relevantItem = actor.items.get(item.id);
 
-        if (!relevantItem) {
-            warn(`No relevant item is found on the actor`);
-            return;
-        }
+		if (!relevantItem) {
+			warn(`No relevant item is found on the actor`);
+			return;
+		}
 
-        const currentFilter = API.isItemInActionList(relevantItem);
+		const currentFilter = API.isItemInActionList(relevantItem);
 
-        // set the flag to be the opposite of what it is now
-        relevantItem.setFlag(CONSTANTS.MODULE_ID, MyFlags.filterOverride, !currentFilter);
-    },
+		// set the flag to be the opposite of what it is now
+		relevantItem.setFlag(CONSTANTS.MODULE_ID, MyFlags.filterOverride, !currentFilter);
+	},
 
 	damageTypeIconMap: {
 		acid: '<i class="fas fa-hand-holding-water"></i>',
@@ -260,7 +260,7 @@ const API = {
 		slashing: '<i class="fas fa-cut"></i>',
 		thunder: '<i class="fas fa-wind"></i>',
 		healing: '<i class="fas fa-heart"></i>',
-		temphp: '<i class="fas fa-shield-alt"></i>',
+		temphp: '<i class="fas fa-shield-alt"></i>'
 	}
 };
 export default API;
