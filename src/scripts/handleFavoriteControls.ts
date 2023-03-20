@@ -15,7 +15,7 @@ export function addFavoriteControls(
 			? game.i18n.localize(`${CONSTANTS.MODULE_ID}.button.setOverrideFalse`)
 			: game.i18n.localize(`${CONSTANTS.MODULE_ID}.button.setOverrideTrue`);
 
-		return `<a class="item-control item-action-filter-override ${
+		return `<a class="item-detail item-control item-action-filter-override ${
 			filterOverride ? "active" : ""
 		}" title="${labelFavOverride}">
             <i class="fas fa-fist-raised">
