@@ -70,51 +70,23 @@
 	// max-width: 30px!important;
 }
 
-.character-actions-list-5e {
+.tab.actions .character-actions-list-5e {
 	.item-name {
 		min-width: 300px!important;
 		max-width: 300px!important;
 	}
-// 	.items-header-controls {
-// 		min-width: 30px!important;
-// 		max-width: 30px!important;
-// 	}
-// 	.item-action-filter-override {
-// 		min-width: 30px!important;
-// 		max-width: 30px!important;
-// 	}
-}
-/* Tidy Specifc override */
-/*
-.tidy5e-sheet {
-	.context-menu {
-		.item-action-filter-override {
-			.control-label {
-				display: unset;
-			}
-			min-width: 30px!important;
-			max-width: 30px!important;
-		}
-	}
-
-	.character-actions-list-5e {
-		.items-header {
-			.item-controls {
-				// display: none;
-				min-width: 30px!important;
-				max-width: 30px!important;
-			}
-		}
-	}
-
-	.character-actions-list-5e {
-		.items-header {
-			.item-controls {
-				// display: none;
-				min-width: 30px!important;
-				max-width: 30px!important;
-			}
-		}
+	.items-list-controls {
+		text-align: right!important;
+		min-width: 100px!important;
 	}
 }
-*/
+
+
+.tab.attributes .character-actions-list-5e {
+	.items-header-controls {
+		display: none!important;
+	}
+	.items-list-controls {
+		display: none!important;
+	}
+}

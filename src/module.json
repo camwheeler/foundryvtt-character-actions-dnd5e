@@ -2,7 +2,7 @@
 	"id": "character-actions-list-5e",
 	"title": "Character Actions List dnd5e (Variant Version))",
 	"description": "Provides an Actions List Component",
-	"version": "6.0.6",
+	"version": "6.0.8",
 	"authors": [
 		{
 			"name": "Andrew Krigline",
@@ -71,8 +71,8 @@
 	"url": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e",
 	"manifest": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/releases/latest/download/module.json",
 	"download": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/releases/latest/download/module.zip",
-	"readme": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/v6.0.6/README.md",
-	"changelog": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/v6.0.6/CHANGELOG.md",
+	"readme": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/v6.0.8/README.md",
+	"changelog": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/blob/v6.0.8/CHANGELOG.md",
 	"bugs": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e/issues",
 	"allowBugReporter": true,
 	"relationships": {
