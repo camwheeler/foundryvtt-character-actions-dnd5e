@@ -55,6 +55,7 @@ For Spells:
 - Does it have an activation cost of 1 reaction or 1 bonus action?
 - If the "Include Minute-long Spells" setting is set, does it have a duration of up to 1 minute (1 round - 1 minute)?
 - If the "Include Spells With Effects" setting is set, does the spell have any active effects?
+- There is a better css compatibility with the orrible Tidy5e Sheet...
 
 For Features:
 
