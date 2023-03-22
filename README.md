@@ -23,6 +23,7 @@ The original author expressed doubts about accepting PR on this because the chan
 - restructured the code to comply with the standard "languages", "scripts", "assests", "lib" folders from https://github.com/League-of-Foundry-Developers/FoundryVTT-Module-Template 
 - all functions related to the API have been transferred to the file "api.ts" and reachable on `game.modules.get('character-actions-list-5e').api`
 - For retrocompatibility issue i still use the original module id so be aware
+- There is a better css compatibility with the orrible Tidy5e Sheet...
 
 I think I could have done the job better, but let me know what you think.
 
@@ -55,7 +56,6 @@ For Spells:
 - Does it have an activation cost of 1 reaction or 1 bonus action?
 - If the "Include Minute-long Spells" setting is set, does it have a duration of up to 1 minute (1 round - 1 minute)?
 - If the "Include Spells With Effects" setting is set, does the spell have any active effects?
-- There is a better css compatibility with the orrible Tidy5e Sheet...
 
 For Features:
 
