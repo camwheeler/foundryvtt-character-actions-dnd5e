@@ -64,8 +64,8 @@
 	"styles": ["styles/dnd5eCharacterActions.css"],
 	"compatibility": {
 		"minimum": 10,
-		"verified": 11,
-		"maximum": 10
+		"verified": 10,
+		"maximum": 11
 	},
 	"manifestPlusVersion": "1.2.1",
 	"url": "https://github.com/p4535992/foundryvtt-character-actions-dnd5e",
