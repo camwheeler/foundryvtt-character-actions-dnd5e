@@ -64,7 +64,7 @@
 	"styles": ["styles/dnd5eCharacterActions.css"],
 	"compatibility": {
 		"minimum": 10,
-		"verified": 10,
+		"verified": 11,
 		"maximum": 10
 	},
 	"manifestPlusVersion": "1.2.1",
